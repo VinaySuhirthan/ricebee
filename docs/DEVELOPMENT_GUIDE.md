@@ -1,8 +1,8 @@
-# DEVELOPMENT GUIDE: LAPTOPAPP CRM SKELETON
+# DEVELOPMENT GUIDE: RICEBEE CRM SKELETON
 
 ## 1. Architecture Overview
 
-LaptopApp is a modular desktop CRM skeleton built with **React Native Windows** and **TypeScript**.
+Ricebee is a modular desktop CRM skeleton built with **React Native Windows** and **TypeScript**.
 The project is engineered for **multi-agent parallel development** and **multi-developer teams**, ensuring zero file conflicts, clear contract boundaries, and clean separation of concerns.
 
 ### Tech Stack

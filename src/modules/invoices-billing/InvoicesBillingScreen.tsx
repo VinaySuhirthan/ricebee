@@ -211,7 +211,7 @@ export const InvoicesBillingScreen: React.FC = () => {
       <PageHeader
         title="Invoices & Tax Billing"
         description="GST tax invoices, automated E-Way bill generation, payment aging schedule, and customer ledgers."
-        breadcrumb={['LAPTOPAPP', 'Sales & CRM', 'Invoices & Billing']}
+        breadcrumb={['RICEBEE', 'Sales & CRM', 'Invoices & Billing']}
         actions={
           <View style={styles.headerActions}>
             <AppButton

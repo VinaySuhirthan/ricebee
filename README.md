@@ -1,6 +1,6 @@
-# LaptopApp CRM
+# Ricebee CRM
 
-LaptopApp CRM is a business management system for a grain mill and superstore. It brings the daily work of the business into one application:
+Ricebee CRM is a business management system for a grain mill and superstore. It brings the daily work of the business into one application:
 
 - Recording trucks on the weighbridge scale (gross and tare weight)
 - Creating bills and GST invoices for customers
@@ -22,6 +22,7 @@ This guide explains how the project is organised and how to make changes with co
 6. [Adding a New Screen](#6-adding-a-new-screen)
 7. [Useful Commands](#7-useful-commands)
 8. [Good Habits](#8-good-habits)
+9. [Note for AI Agents](#9-note-for-ai-agents)
 
 ---
 
@@ -221,3 +222,13 @@ Run these in a terminal, inside the `rice/` folder.
 If you get stuck, look at an existing module that does something similar to what you need. Copying its structure is a perfectly good way to begin.
 
 Happy building.
+
+---
+
+## 9. Note for AI Agents
+
+- **DO:** Write all feature code exclusively inside `src/modules/<feature>/` and reuse components from `src/shared/`.
+- **DO:** Run `npx tsc --noEmit` and confirm 0 TypeScript errors before completing your work.
+- **DO NOT:** Touch `windows/`, `android/`, `ios/`, or `package.json` unless explicitly instructed by the user.
+- **DO NOT:** Edit central architecture files (`App.tsx`, `src/app/`, `src/navigation/`, `src/layout/`) during standard feature work.
+

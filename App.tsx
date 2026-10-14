@@ -1,5 +1,5 @@
 /**
- * LaptopApp - Modular Windows Desktop CRM Skeleton
+ * Ricebee - Modular Windows Desktop CRM Skeleton
  * Integrated Root Entry Point
  *
  * @format

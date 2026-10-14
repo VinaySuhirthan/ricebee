@@ -234,7 +234,7 @@ export const SalesOrdersScreen: React.FC = () => {
       <PageHeader
         title="Sales Orders & Dispatch"
         description="Wholesale and distributor sales order processing, delivery scheduling, and dispatch slips."
-        breadcrumb={['LAPTOPAPP', 'Sales & CRM', 'Sales Orders']}
+        breadcrumb={['RICEBEE', 'Sales & CRM', 'Sales Orders']}
         actions={
           <View style={styles.headerActions}>
             <AppButton

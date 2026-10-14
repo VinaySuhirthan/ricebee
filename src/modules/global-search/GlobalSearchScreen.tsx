@@ -115,7 +115,7 @@ export const GlobalSearchScreen: React.FC = () => {
       <PageHeader
         title="Global System Search"
         description="Unified search across customer directories, active orders, tax invoices, warehouse stock, and weighbridge slips."
-        breadcrumb={['LAPTOPAPP', 'Overview', 'Global Search']}
+        breadcrumb={['RICEBEE', 'Overview', 'Global Search']}
       />
 
       {/* Search Input Bar */}

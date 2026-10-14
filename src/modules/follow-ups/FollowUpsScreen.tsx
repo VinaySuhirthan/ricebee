@@ -86,7 +86,7 @@ export const FollowUpsScreen: React.FC = () => {
       <PageHeader
         title="Customer Follow-ups"
         description="High-priority receivable chasing, recurring re-order calls, delivery check-ins, and scheduled sales tasks."
-        breadcrumb={['LAPTOPAPP', 'Sales & CRM', 'Follow-ups']}
+        breadcrumb={['RICEBEE', 'Sales & CRM', 'Follow-ups']}
         actions={
           <View style={styles.headerActions}>
             <AppButton

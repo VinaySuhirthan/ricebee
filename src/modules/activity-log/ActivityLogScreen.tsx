@@ -191,7 +191,7 @@ export const ActivityLogScreen: React.FC = () => {
       <PageHeader
         title="Audit Trail & Activity Log"
         description="Immutable enterprise audit trail, user authentication sessions, weighment overrides, and billing changes."
-        breadcrumb={['LAPTOPAPP', 'System', 'Activity Log']}
+        breadcrumb={['RICEBEE', 'System', 'Activity Log']}
         actions={
           <View style={styles.headerActions}>
             <AppButton

@@ -189,7 +189,7 @@ export const ProductsScreen: React.FC = () => {
       <PageHeader
         title="Product Catalog & Inventory"
         description="Finished rice grain inventory, mill gate pricing, bagged storage locations, and automated reorder alerts."
-        breadcrumb={['LAPTOPAPP', 'Warehouse & Supply Chain', 'Products']}
+        breadcrumb={['RICEBEE', 'Warehouse & Supply Chain', 'Products']}
         actions={
           <View style={styles.headerActions}>
             <AppButton

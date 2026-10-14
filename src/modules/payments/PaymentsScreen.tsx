@@ -162,7 +162,7 @@ export const PaymentsScreen: React.FC = () => {
       <PageHeader
         title="Payments & Settlements"
         description="Cash counter collections, NEFT/RTGS bank settlements, cheque clearing status, and ledger allocation."
-        breadcrumb={['LAPTOPAPP', 'Sales & CRM', 'Payments']}
+        breadcrumb={['RICEBEE', 'Sales & CRM', 'Payments']}
         actions={
           <View style={styles.headerActions}>
             <AppButton

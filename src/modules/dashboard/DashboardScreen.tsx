@@ -195,7 +195,7 @@ export const DashboardScreen: React.FC = () => {
       <PageHeader
         title="Operations Dashboard"
         description="Real-time overview of sales counter, mill orders, inward scale, and receivables."
-        breadcrumb={['LAPTOPAPP', 'Overview', 'Dashboard']}
+        breadcrumb={['RICEBEE', 'Overview', 'Dashboard']}
         actions={
           <View style={styles.headerActions}>
             <AppButton

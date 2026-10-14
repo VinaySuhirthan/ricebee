@@ -141,7 +141,7 @@ export const ManualBillingScreen: React.FC = () => {
       <PageHeader
         title="Manual Billing & Counter POS"
         description="Quick counter billing, instant retail receipts, custom line items, and live print preview."
-        breadcrumb={['LAPTOPAPP', 'Sales & CRM', 'Manual Billing']}
+        breadcrumb={['RICEBEE', 'Sales & CRM', 'Manual Billing']}
         actions={
           <View style={styles.headerActions}>
             <AppButton
@@ -279,7 +279,7 @@ export const ManualBillingScreen: React.FC = () => {
             <View style={styles.previewBox}>
               <View style={styles.previewHeader}>
                 <Text style={[typography.h3, styles.previewFirm]}>
-                  LAPTOPAPP GRAIN MILL
+                  RICEBEE GRAIN MILL
                 </Text>
                 <Text style={[typography.caption, {color: colors.textMuted}]}>
                   Plot 12, Industrial Area, Maharashtra

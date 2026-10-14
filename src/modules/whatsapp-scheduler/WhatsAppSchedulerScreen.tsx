@@ -148,7 +148,7 @@ export const WhatsAppSchedulerScreen: React.FC = () => {
       <PageHeader
         title="WhatsApp Campaign Scheduler"
         description="Automated payment reminders, broadcast daily mill grain rates, and instant dispatch notifications via WhatsApp Cloud API."
-        breadcrumb={['LAPTOPAPP', 'Sales & CRM', 'WhatsApp Scheduler']}
+        breadcrumb={['RICEBEE', 'Sales & CRM', 'WhatsApp Scheduler']}
         actions={
           <View style={styles.headerActions}>
             <AppButton

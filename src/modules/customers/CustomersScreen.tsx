@@ -195,7 +195,7 @@ export const CustomersScreen: React.FC = () => {
       <PageHeader
         title="Customers & Accounts"
         description="Customer directory with GST verification, credit limit ledger, outstanding receivables, and order history."
-        breadcrumb={['LAPTOPAPP', 'Sales & CRM', 'Customers']}
+        breadcrumb={['RICEBEE', 'Sales & CRM', 'Customers']}
         actions={
           <View style={styles.headerActions}>
             <AppButton

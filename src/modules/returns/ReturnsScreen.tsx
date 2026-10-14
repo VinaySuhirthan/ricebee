@@ -143,7 +143,7 @@ export const ReturnsScreen: React.FC = () => {
       <PageHeader
         title="Returns & Credit Notes"
         description="Customer return authorization, mill quality inspection lab, stock restock, and GST credit note generation."
-        breadcrumb={['LAPTOPAPP', 'Sales & CRM', 'Returns']}
+        breadcrumb={['RICEBEE', 'Sales & CRM', 'Returns']}
         actions={
           <View style={styles.headerActions}>
             <AppButton

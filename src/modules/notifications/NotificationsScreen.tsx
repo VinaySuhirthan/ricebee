@@ -104,7 +104,7 @@ export const NotificationsScreen: React.FC = () => {
       <PageHeader
         title="System Notifications"
         description="Operational alerts from weighbridge sensors, credit limit breaches, GST E-Way sync, and automated workflows."
-        breadcrumb={['LAPTOPAPP', 'System', 'Notifications']}
+        breadcrumb={['RICEBEE', 'System', 'Notifications']}
         actions={
           <View style={styles.headerActions}>
             <AppButton

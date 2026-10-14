@@ -172,7 +172,7 @@ export const GoodsInwardScreen: React.FC = () => {
         title="POS — Goods Inward Scale"
         description="Weighbridge terminal interface, gross/tare vehicle weighing, moisture laboratory analysis, and paddy inward slips."
         breadcrumb={[
-          'LAPTOPAPP',
+          'RICEBEE',
           'Warehouse & Supply Chain',
           'Goods Inward Scale',
         ]}

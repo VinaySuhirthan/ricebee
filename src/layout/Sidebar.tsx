@@ -84,7 +84,7 @@ export const Sidebar: React.FC = () => {
           <AppIcon name="dashboard" size={16} color={colors.white} />
         </View>
         <View style={styles.brandTextContainer}>
-          <Text style={[typography.h3, styles.brandName]}>LAPTOPAPP</Text>
+          <Text style={[typography.h3, styles.brandName]}>RICEBEE</Text>
           <Text style={[typography.caption, styles.brandSub]}>
             Enterprise CRM v1.0
           </Text>

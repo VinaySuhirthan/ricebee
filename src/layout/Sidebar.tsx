@@ -7,6 +7,7 @@ import {typography} from '../shared/theme/typography';
 import {spacing, radii} from '../shared/theme/spacing';
 import SidebarSection from './SidebarSection';
 import AppIcon from '../shared/components/AppIcon';
+import AppLogo from '../shared/components/AppLogo';
 
 export const SIDEBAR_SECTIONS: NavSectionConfig[] = [
   {
@@ -21,9 +22,22 @@ export const SIDEBAR_SECTIONS: NavSectionConfig[] = [
     key: 'SALES & CRM',
     title: 'SALES & CRM',
     items: [
+      {
+        key: 'offline',
+        label: 'Offline Store Billing',
+        icon: 'billing',
+        badge: 'POS',
+        badgeVariant: 'warning',
+      },
+      {
+        key: 'online',
+        label: 'Online Hub & Orders',
+        icon: 'online',
+        badge: 'Live',
+        badgeVariant: 'info',
+      },
       {key: 'customers', label: 'Customers', icon: 'customers'},
       {key: 'sales-orders', label: 'Sales Orders', icon: 'orders'},
-      {key: 'manual-billing', label: 'Manual Billing', icon: 'billing'},
       {key: 'invoices-billing', label: 'Invoices & Billing', icon: 'invoices'},
       {key: 'payments', label: 'Payments', icon: 'payments'},
       {
@@ -73,22 +87,36 @@ export const SIDEBAR_SECTIONS: NavSectionConfig[] = [
   },
 ];
 
-export const Sidebar: React.FC = () => {
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+export const Sidebar: React.FC<SidebarProps> = ({onClose}) => {
   const {currentRoute, navigate} = useNavigation();
 
   return (
     <View style={styles.sidebarContainer}>
       {/* Brand Header */}
       <View style={styles.brandContainer}>
-        <View style={styles.brandIconBox}>
-          <AppIcon name="dashboard" size={16} color={colors.white} />
-        </View>
+        <AppLogo size={36} />
         <View style={styles.brandTextContainer}>
           <Text style={[typography.h3, styles.brandName]}>RICEBEE</Text>
           <Text style={[typography.caption, styles.brandSub]}>
             Enterprise CRM v1.0
           </Text>
         </View>
+        {onClose && (
+          <Pressable
+            style={({pressed}) => [
+              styles.collapseBtn,
+              pressed && styles.collapseBtnPressed,
+            ]}
+            onPress={onClose}
+            accessibilityRole="button"
+            accessibilityLabel="Close sidebar">
+            <Text style={styles.collapseIcon}>☰</Text>
+          </Pressable>
+        )}
       </View>
 
       {/* Nav List */}
@@ -149,15 +177,7 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.lg,
     borderBottomWidth: 1,
     borderBottomColor: colors.sidebarBorder,
-  },
-  brandIconBox: {
-    width: 32,
-    height: 32,
-    borderRadius: radii.sm,
-    backgroundColor: colors.primary,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: spacing.md,
+    gap: spacing.md,
   },
   brandTextContainer: {
     flex: 1,
@@ -171,6 +191,25 @@ const styles = StyleSheet.create({
   brandSub: {
     color: colors.sidebarSection,
     fontSize: 11,
+  },
+  collapseBtn: {
+    width: 32,
+    height: 32,
+    borderRadius: 6,
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.15)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  collapseBtnPressed: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+  },
+  collapseIcon: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#E2E8F0',
+    lineHeight: 20,
   },
   scrollArea: {
     flex: 1,

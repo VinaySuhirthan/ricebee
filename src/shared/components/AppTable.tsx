@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
   headerRow: {
     flexDirection: 'row',
-    backgroundColor: '#0F1829',
+    backgroundColor: colors.tableRowAlt,
     borderBottomWidth: 1,
     borderBottomColor: colors.cardBorder,
     paddingVertical: spacing.md,
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(30, 47, 77, 0.4)',
+    borderBottomColor: colors.divider,
     paddingVertical: spacing.md,
     paddingHorizontal: spacing.sm,
     alignItems: 'center',
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.tableRowAlt,
   },
   rowPressed: {
-    backgroundColor: colors.sidebarHover,
+    backgroundColor: colors.tableRowHover,
   },
   cell: {
     paddingHorizontal: spacing.md,

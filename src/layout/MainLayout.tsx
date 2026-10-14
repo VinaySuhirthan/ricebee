@@ -9,16 +9,30 @@ interface MainLayoutProps {
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = ({children}) => {
+  const [isSidebarOpen, setIsSidebarOpen] = React.useState(true);
+
+  const toggleSidebar = React.useCallback(() => {
+    setIsSidebarOpen(prev => !prev);
+  }, []);
+
+  const closeSidebar = React.useCallback(() => {
+    setIsSidebarOpen(false);
+  }, []);
+
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="light-content" backgroundColor={colors.sidebarBg} />
+      {/* Light content area, dark sidebar stays its own bg */}
+      <StatusBar barStyle="dark-content" backgroundColor={colors.headerBg} />
       <View style={styles.layoutContainer}>
-        {/* Left Persistent Dark Navy Sidebar */}
-        <Sidebar />
+        {/* Left Collapsible Dark Navy Sidebar */}
+        {isSidebarOpen && <Sidebar onClose={closeSidebar} />}
 
-        {/* Right Main Content Area */}
+        {/* Right Main Content Area — Zoho light canvas */}
         <View style={styles.mainContent}>
-          <Header />
+          <Header
+            onToggleSidebar={toggleSidebar}
+            isSidebarOpen={isSidebarOpen}
+          />
           <View style={styles.pageContainer}>{children}</View>
         </View>
       </View>
@@ -29,12 +43,11 @@ export const MainLayout: React.FC<MainLayoutProps> = ({children}) => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: colors.appBg,
+    backgroundColor: colors.sidebarBg,
   },
   layoutContainer: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: colors.appBg,
     height: '100%',
   },
   mainContent: {

@@ -199,11 +199,11 @@ export const DashboardScreen: React.FC = () => {
         actions={
           <View style={styles.headerActions}>
             <AppButton
-              title="Manual Billing"
+              title="Store Billing"
               variant="secondary"
               size="sm"
               icon="billing"
-              onPress={() => navigate('manual-billing')}
+              onPress={() => navigate('offline')}
             />
             <AppButton
               title="Scale Inward"
@@ -322,7 +322,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     paddingVertical: spacing.md,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(30, 47, 77, 0.4)',
+    borderBottomColor: colors.divider,
   },
   activityDot: {
     width: 8,

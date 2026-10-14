@@ -40,7 +40,7 @@ export const SidebarSection: React.FC<SidebarSectionProps> = ({
                 {isActive && <View style={styles.activeIndicator} />}
                 <AppIcon
                   name={item.icon}
-                  size={15}
+                  size={17}
                   color={
                     isActive ? colors.sidebarTextActive : colors.sidebarText
                   }
@@ -49,7 +49,6 @@ export const SidebarSection: React.FC<SidebarSectionProps> = ({
                 <Text
                   numberOfLines={1}
                   style={[
-                    typography.bodyMedium,
                     styles.itemLabel,
                     isActive
                       ? styles.itemLabelActive
@@ -126,15 +125,15 @@ const styles = StyleSheet.create({
     marginRight: spacing.md,
   },
   itemLabel: {
-    fontSize: 13,
+    fontSize: 14,
   },
   itemLabelActive: {
     color: colors.sidebarTextActive,
-    fontWeight: '600',
+    fontWeight: '700',
   },
   itemLabelInactive: {
     color: colors.sidebarText,
-    fontWeight: '400',
+    fontWeight: '500',
   },
   badge: {
     minWidth: 18,

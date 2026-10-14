@@ -119,13 +119,13 @@ const styles = StyleSheet.create({
   },
   inputWrapperFocused: {
     borderColor: colors.primary,
-    backgroundColor: '#0F1A30',
+    backgroundColor: colors.cardBg,
   },
   inputWrapperError: {
     borderColor: colors.danger,
   },
   inputWrapperDisabled: {
-    backgroundColor: '#1E293B',
+    backgroundColor: colors.tableRowAlt,
     opacity: 0.6,
   },
   leadingIcon: {

@@ -78,4 +78,6 @@ export type IconName =
   | 'trending-up'
   | 'trending-down'
   | 'clock'
-  | 'currency';
+  | 'currency'
+  | 'offline'
+  | 'online';

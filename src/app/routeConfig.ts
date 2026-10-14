@@ -4,7 +4,6 @@ import {
   GlobalSearchScreen,
   CustomersScreen,
   SalesOrdersScreen,
-  ManualBillingScreen,
   InvoicesBillingScreen,
   PaymentsScreen,
   FollowUpsScreen,
@@ -14,6 +13,8 @@ import {
   ProductsScreen,
   NotificationsScreen,
   ActivityLogScreen,
+  OfflineScreen,
+  OnlineScreen,
 } from '../modules';
 
 export const ROUTE_REGISTRY: Record<RouteKey, RouteDefinition> = {
@@ -40,12 +41,6 @@ export const ROUTE_REGISTRY: Record<RouteKey, RouteDefinition> = {
     title: 'Sales Orders',
     section: 'SALES & CRM',
     component: SalesOrdersScreen,
-  },
-  'manual-billing': {
-    key: 'manual-billing',
-    title: 'Manual Billing',
-    section: 'SALES & CRM',
-    component: ManualBillingScreen,
   },
   'invoices-billing': {
     key: 'invoices-billing',
@@ -88,6 +83,18 @@ export const ROUTE_REGISTRY: Record<RouteKey, RouteDefinition> = {
     title: 'Products',
     section: 'WAREHOUSE & SUPPLY CHAIN',
     component: ProductsScreen,
+  },
+  offline: {
+    key: 'offline',
+    title: 'Offline Store Billing',
+    section: 'SALES & CRM',
+    component: OfflineScreen,
+  },
+  online: {
+    key: 'online',
+    title: 'Online Hub & Orders',
+    section: 'SALES & CRM',
+    component: OnlineScreen,
   },
   notifications: {
     key: 'notifications',

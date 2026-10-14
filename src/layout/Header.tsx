@@ -4,23 +4,31 @@ import {useNavigation} from '../navigation/AppNavigator';
 import {colors} from '../shared/theme/colors';
 import {typography} from '../shared/theme/typography';
 import {spacing, radii} from '../shared/theme/spacing';
-import AppIcon from '../shared/components/AppIcon';
 
-export const Header: React.FC = () => {
-  const {currentRoute, navigate, canGoBack, goBack} = useNavigation();
+interface HeaderProps {
+  onToggleSidebar?: () => void;
+  isSidebarOpen?: boolean;
+}
+
+export const Header: React.FC<HeaderProps> = ({
+  onToggleSidebar,
+  isSidebarOpen,
+}) => {
+  const {currentRoute} = useNavigation();
 
   return (
     <View style={styles.headerContainer}>
       <View style={styles.leftSection}>
-        {canGoBack && (
+        {onToggleSidebar && (
           <Pressable
-            onPress={goBack}
-            accessibilityRole="button"
             style={({pressed}) => [
-              styles.backBtn,
-              pressed && styles.btnPressed,
-            ]}>
-            <AppIcon name="arrow-left" size={14} color={colors.textSecondary} />
+              styles.hamburgerBtn,
+              pressed && styles.hamburgerBtnPressed,
+            ]}
+            onPress={onToggleSidebar}
+            accessibilityRole="button"
+            accessibilityLabel={isSidebarOpen ? 'Close sidebar' : 'Open sidebar'}>
+            <Text style={styles.hamburgerIcon}>☰</Text>
           </Pressable>
         )}
         <View style={styles.titleWrapper}>
@@ -28,56 +36,6 @@ export const Header: React.FC = () => {
             {formatRouteTitle(currentRoute)}
           </Text>
         </View>
-      </View>
-
-      {/* Global Quick Search Pill */}
-      <Pressable
-        onPress={() => navigate('global-search')}
-        style={({pressed}) => [
-          styles.quickSearchPill,
-          pressed && styles.quickSearchPressed,
-        ]}>
-        <AppIcon
-          name="search"
-          size={13}
-          color={colors.textMuted}
-          style={styles.searchIcon}
-        />
-        <Text style={[typography.caption, styles.quickSearchText]}>
-          Search orders, customers, products (Ctrl+K)...
-        </Text>
-      </Pressable>
-
-      {/* Right Header Actions */}
-      <View style={styles.rightSection}>
-        <Pressable
-          onPress={() => navigate('manual-billing')}
-          style={({pressed}) => [
-            styles.quickActionBtn,
-            pressed && styles.btnPressed,
-          ]}>
-          <AppIcon name="plus" size={13} color={colors.white} />
-          <Text style={styles.quickActionText}>New Bill</Text>
-        </Pressable>
-
-        <Pressable
-          onPress={() => navigate('notifications')}
-          accessibilityRole="button"
-          style={({pressed}) => [styles.iconBtn, pressed && styles.btnPressed]}>
-          <AppIcon
-            name="notifications"
-            size={15}
-            color={colors.textSecondary}
-          />
-          <View style={styles.notificationDot} />
-        </Pressable>
-
-        <Pressable
-          onPress={() => navigate('activity-log')}
-          accessibilityRole="button"
-          style={({pressed}) => [styles.iconBtn, pressed && styles.btnPressed]}>
-          <AppIcon name="activity" size={15} color={colors.textSecondary} />
-        </Pressable>
       </View>
     </View>
   );
@@ -93,8 +51,10 @@ function formatRouteTitle(route: string): string {
       return 'Customers & Accounts';
     case 'sales-orders':
       return 'Sales Orders & Fulfillment';
-    case 'manual-billing':
-      return 'Manual Billing & Counter POS';
+    case 'offline':
+      return 'Offline Store Billing';
+    case 'online':
+      return 'Online Hub & Digital Orders';
     case 'invoices-billing':
       return 'Invoices & Tax Billing';
     case 'payments':
@@ -133,11 +93,33 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  hamburgerBtn: {
+    width: 36,
+    height: 36,
+    borderRadius: 6,
+    backgroundColor: '#F1F5F9',
+    borderWidth: 1,
+    borderColor: '#CBD5E1',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+  },
+  hamburgerBtnPressed: {
+    backgroundColor: '#E2E8F0',
+  },
+  hamburgerIcon: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: '#1E293B',
+    lineHeight: 22,
+  },
   backBtn: {
     width: 28,
     height: 28,
     borderRadius: radii.xs,
-    backgroundColor: '#162238',
+    backgroundColor: colors.tableRowAlt,
+    borderWidth: 1,
+    borderColor: colors.cardBorder,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: spacing.sm,
@@ -153,9 +135,9 @@ const styles = StyleSheet.create({
   quickSearchPill: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#0A1020',
+    backgroundColor: colors.appBg,
     borderWidth: 1,
-    borderColor: '#1F2E4A',
+    borderColor: colors.inputBorder,
     borderRadius: radii.sm,
     paddingHorizontal: spacing.md,
     paddingVertical: 6,
@@ -194,15 +176,15 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: radii.sm,
-    backgroundColor: '#131D33',
+    backgroundColor: colors.cardBg,
     borderWidth: 1,
-    borderColor: '#202E4C',
+    borderColor: colors.cardBorder,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
   },
   btnPressed: {
-    opacity: 0.8,
+    opacity: 0.75,
   },
   notificationDot: {
     position: 'absolute',

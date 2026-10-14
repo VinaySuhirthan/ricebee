@@ -215,11 +215,11 @@ export const InvoicesBillingScreen: React.FC = () => {
         actions={
           <View style={styles.headerActions}>
             <AppButton
-              title="Manual Bill"
+              title="Store Bill"
               variant="secondary"
               size="sm"
               icon="billing"
-              onPress={() => navigate('manual-billing')}
+              onPress={() => navigate('offline')}
             />
             <AppButton
               title="GST Summary"

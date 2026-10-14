@@ -40,6 +40,8 @@ const ICON_MAP: Record<IconName, string> = {
   'trending-down': '↘',
   clock: '🕒',
   currency: '₹',
+  offline: '📝',
+  online: '🌐',
 };
 
 export const AppIcon: React.FC<AppIconProps> = ({

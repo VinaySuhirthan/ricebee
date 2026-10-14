@@ -284,7 +284,7 @@ export const ProductsScreen: React.FC = () => {
           columns={columns}
           data={filteredProducts}
           keyExtractor={item => item.id}
-          onRowPress={() => navigate('manual-billing')}
+          onRowPress={() => navigate('offline')}
         />
       </AppCard>
     </ScrollView>

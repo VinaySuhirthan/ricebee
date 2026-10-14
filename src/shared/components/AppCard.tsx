@@ -54,11 +54,11 @@ const VARIANT_STYLES = StyleSheet.create({
   },
   elevated: {
     backgroundColor: colors.cardBgElevated,
-    borderColor: '#253556',
+    borderColor: colors.cardBorder,
   },
   glass: {
-    backgroundColor: 'rgba(19, 28, 49, 0.7)',
-    borderColor: 'rgba(30, 47, 77, 0.8)',
+    backgroundColor: 'rgba(255, 255, 255, 0.85)',
+    borderColor: colors.cardBorder,
   },
   accent: {
     backgroundColor: colors.cardBg,
@@ -73,6 +73,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: spacing.lg,
     marginVertical: spacing.sm,
+    // Subtle white-card shadow for Zoho-like elevation
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.06,
+    shadowRadius: 4,
+    elevation: 2,
   },
   cardHeader: {
     flexDirection: 'row',
@@ -81,7 +87,7 @@ const styles = StyleSheet.create({
     paddingBottom: spacing.md,
     marginBottom: spacing.md,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(30, 47, 77, 0.5)',
+    borderBottomColor: colors.divider,
   },
   titleContainer: {
     flex: 1,

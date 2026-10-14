@@ -44,8 +44,8 @@ export const AppButton: React.FC<AppButtonProps> = ({
     if (disabled) {
       return {
         container: {
-          backgroundColor: '#1E293B',
-          borderColor: '#334155',
+          backgroundColor: colors.tableRowAlt,
+          borderColor: colors.cardBorder,
           borderWidth: 1,
         },
         text: {color: colors.textDisabled},
@@ -66,8 +66,8 @@ export const AppButton: React.FC<AppButtonProps> = ({
       case 'secondary':
         return {
           container: {
-            backgroundColor: pressed ? '#24324F' : '#1A243B',
-            borderColor: '#2F4064',
+            backgroundColor: pressed ? colors.tableRowHover : colors.cardBg,
+            borderColor: colors.inputBorder,
             borderWidth: 1,
           },
           text: {color: colors.textPrimary},
@@ -76,14 +76,12 @@ export const AppButton: React.FC<AppButtonProps> = ({
       case 'outline':
         return {
           container: {
-            backgroundColor: pressed
-              ? 'rgba(59, 130, 246, 0.1)'
-              : 'transparent',
-            borderColor: '#3B82F6',
+            backgroundColor: pressed ? colors.primaryLight : colors.transparent,
+            borderColor: colors.primary,
             borderWidth: 1,
           },
-          text: {color: '#60A5FA'},
-          iconColor: '#60A5FA',
+          text: {color: colors.primary},
+          iconColor: colors.primary,
         };
       case 'danger':
         return {
@@ -97,13 +95,11 @@ export const AppButton: React.FC<AppButtonProps> = ({
       case 'ghost':
         return {
           container: {
-            backgroundColor: pressed
-              ? 'rgba(255, 255, 255, 0.06)'
-              : 'transparent',
-            borderColor: 'transparent',
+            backgroundColor: pressed ? colors.tableRowHover : colors.transparent,
+            borderColor: colors.transparent,
           },
-          text: {color: colors.textSecondary},
-          iconColor: colors.textSecondary,
+          text: {color: colors.primary},
+          iconColor: colors.primary,
         };
     }
   };

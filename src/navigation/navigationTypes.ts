@@ -6,7 +6,6 @@ export type RouteKey =
   | 'global-search'
   | 'customers'
   | 'sales-orders'
-  | 'manual-billing'
   | 'invoices-billing'
   | 'payments'
   | 'follow-ups'
@@ -14,6 +13,8 @@ export type RouteKey =
   | 'returns'
   | 'goods-inward'
   | 'products'
+  | 'offline'
+  | 'online'
   | 'notifications'
   | 'activity-log';
 

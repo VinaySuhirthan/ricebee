@@ -61,33 +61,33 @@ const VARIANT_MAP: Record<
 > = {
   primary: {
     bg: colors.primaryLight,
-    text: '#60A5FA',
-    border: 'rgba(59, 130, 246, 0.3)',
+    text: colors.primary,
+    border: 'rgba(21, 101, 192, 0.3)',
   },
   success: {
     bg: colors.successBg,
-    text: '#34D399',
-    border: 'rgba(16, 185, 129, 0.3)',
+    text: colors.success,
+    border: 'rgba(46, 125, 50, 0.3)',
   },
   warning: {
     bg: colors.warningBg,
-    text: '#FBBF24',
-    border: 'rgba(245, 158, 11, 0.3)',
+    text: colors.warning,
+    border: 'rgba(230, 81, 0, 0.3)',
   },
   danger: {
     bg: colors.dangerBg,
-    text: '#F87171',
-    border: 'rgba(239, 68, 68, 0.3)',
+    text: colors.danger,
+    border: 'rgba(198, 40, 40, 0.3)',
   },
   info: {
     bg: colors.infoBg,
-    text: '#38BDF8',
-    border: 'rgba(56, 189, 248, 0.3)',
+    text: colors.info,
+    border: 'rgba(2, 119, 189, 0.3)',
   },
   neutral: {
     bg: colors.neutralBg,
-    text: '#94A3B8',
-    border: 'rgba(148, 163, 184, 0.25)',
+    text: colors.neutral,
+    border: 'rgba(96, 125, 139, 0.3)',
   },
 };
 

@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     paddingBottom: spacing.lg,
     marginBottom: spacing.md,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(30, 47, 77, 0.4)',
+    borderBottomColor: colors.divider,
   },
   breadcrumbRow: {
     flexDirection: 'row',

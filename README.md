@@ -1,5 +1,23 @@
 # Ricebee 
 
+## how to run 
+
+# have these things installs (dependencies)
+
+Windows Developer Mode: Turn ON in Windows Settings.
+Node.js: v18 or v20 LTS.
+Visual Studio 2022*(not 2026) (open Visual Studio Installer → Modify):
+-- Desktop development with C++ (Workload)
+-- Universal Windows Platform development (Workload)
+-- Windows 11 SDK (10.0.22621.0) (Individual Component — this is what failed)
+-- C++ (v143) Universal Windows Platform tools (Individual Component)
+
+# then do 
+
+"npm start" → Runs the background code server (Metro) that updates your screens live whenever you save a file. (Keep it open in Terminal 1).
+
+"npx react-native run-windows" → Builds and opens the desktop app window on your computer. (Run it in Terminal 2).
+
 
 ## 1. Where You Need to Code
 

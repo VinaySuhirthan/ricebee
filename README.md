@@ -1,30 +1,5 @@
-# Ricebee CRM
+# Ricebee 
 
-Ricebee CRM is a business management system for a grain mill and superstore. It brings the daily work of the business into one application:
-
-- Recording trucks on the weighbridge scale (gross and tare weight)
-- Creating bills and GST invoices for customers
-- Tracking rice stock in the warehouse
-- Recording payments (cash, UPI, bank transfer)
-- Sending WhatsApp price lists and payment reminders
-
-This guide explains how the project is organised and how to make changes with confidence, even if you are new to the codebase.
-
----
-
-## Table of Contents
-
-1. [Where You Need to Code](#1-where-you-need-to-code)
-2. [Project Structure](#2-project-structure)
-3. [Feature Modules](#3-feature-modules)
-4. [Reusable Components](#4-reusable-components)
-5. [Making Your First Change](#5-making-your-first-change)
-6. [Adding a New Screen](#6-adding-a-new-screen)
-7. [Useful Commands](#7-useful-commands)
-8. [Good Habits](#8-good-habits)
-9. [Note for AI Agents](#9-note-for-ai-agents)
-
----
 
 ## 1. Where You Need to Code
 

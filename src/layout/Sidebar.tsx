@@ -2,11 +2,9 @@ import React from 'react';
 import {View, Text, StyleSheet, ScrollView, Pressable} from 'react-native';
 import {NavSectionConfig, RouteKey} from '../navigation/navigationTypes';
 import {useNavigation} from '../navigation/AppNavigator';
-import {colors} from '../shared/theme/colors';
 import {typography} from '../shared/theme/typography';
 import {spacing, radii} from '../shared/theme/spacing';
 import SidebarSection from './SidebarSection';
-import AppIcon from '../shared/components/AppIcon';
 import AppLogo from '../shared/components/AppLogo';
 
 export const SIDEBAR_SECTIONS: NavSectionConfig[] = [
@@ -27,14 +25,12 @@ export const SIDEBAR_SECTIONS: NavSectionConfig[] = [
         label: 'Offline Store Billing',
         icon: 'billing',
         badge: 'POS',
-        badgeVariant: 'warning',
       },
       {
         key: 'online',
         label: 'Online Hub & Orders',
         icon: 'online',
         badge: 'Live',
-        badgeVariant: 'info',
       },
       {key: 'customers', label: 'Customers', icon: 'customers'},
       {key: 'sales-orders', label: 'Sales Orders', icon: 'orders'},
@@ -45,21 +41,18 @@ export const SIDEBAR_SECTIONS: NavSectionConfig[] = [
         label: 'Follow-ups',
         icon: 'followups',
         badge: 5,
-        badgeVariant: 'warning',
       },
       {
         key: 'whatsapp-scheduler',
         label: 'WhatsApp Scheduler',
         icon: 'whatsapp',
         badge: 2,
-        badgeVariant: 'info',
       },
       {
         key: 'returns',
         label: 'Returns',
         icon: 'returns',
         badge: 3,
-        badgeVariant: 'danger',
       },
     ],
   },
@@ -80,43 +73,25 @@ export const SIDEBAR_SECTIONS: NavSectionConfig[] = [
         label: 'Notifications',
         icon: 'notifications',
         badge: 9,
-        badgeVariant: 'danger',
       },
       {key: 'activity-log', label: 'Activity Log', icon: 'activity'},
+      {key: 'settings', label: 'Settings & Tax', icon: 'settings'},
     ],
   },
 ];
 
-interface SidebarProps {
-  onClose?: () => void;
-}
-
-export const Sidebar: React.FC<SidebarProps> = ({onClose}) => {
+export const Sidebar: React.FC = () => {
   const {currentRoute, navigate} = useNavigation();
 
   return (
     <View style={styles.sidebarContainer}>
       {/* Brand Header */}
       <View style={styles.brandContainer}>
-        <AppLogo size={36} />
+        <AppLogo size={28} />
         <View style={styles.brandTextContainer}>
-          <Text style={[typography.h3, styles.brandName]}>RICEBEE</Text>
-          <Text style={[typography.caption, styles.brandSub]}>
-            Enterprise CRM v1.0
-          </Text>
+          <Text style={styles.brandName}>RICEBEE</Text>
+          <Text style={styles.brandSub}>Enterprise CRM</Text>
         </View>
-        {onClose && (
-          <Pressable
-            style={({pressed}) => [
-              styles.collapseBtn,
-              pressed && styles.collapseBtnPressed,
-            ]}
-            onPress={onClose}
-            accessibilityRole="button"
-            accessibilityLabel="Close sidebar">
-            <Text style={styles.collapseIcon}>☰</Text>
-          </Pressable>
-        )}
       </View>
 
       {/* Nav List */}
@@ -134,7 +109,7 @@ export const Sidebar: React.FC<SidebarProps> = ({onClose}) => {
         ))}
       </ScrollView>
 
-      {/* User / Workplace Footer */}
+      {/* User / Counter Footer */}
       <View style={styles.footerContainer}>
         <Pressable
           style={({pressed}) => [
@@ -147,11 +122,11 @@ export const Sidebar: React.FC<SidebarProps> = ({onClose}) => {
           </View>
           <View style={styles.userInfo}>
             <Text style={styles.userName} numberOfLines={1}>
-              Operations Lead
+              Operations Counter
             </Text>
             <View style={styles.statusRow}>
               <View style={styles.statusDot} />
-              <Text style={styles.userRole}>Windows Desktop</Text>
+              <Text style={styles.userRole}>Terminal Active</Text>
             </View>
           </View>
         </Pressable>
@@ -162,10 +137,10 @@ export const Sidebar: React.FC<SidebarProps> = ({onClose}) => {
 
 const styles = StyleSheet.create({
   sidebarContainer: {
-    width: 260,
-    backgroundColor: colors.sidebarBg,
+    width: 240, // 240px wide Zoho specification
+    backgroundColor: '#FFFFFF', // Pure white, no heavy navy
     borderRightWidth: 1,
-    borderRightColor: colors.sidebarBorder,
+    borderRightColor: '#E7E4DD', // Hairline border
     height: '100%',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -174,42 +149,25 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.lg,
+    height: 56, // matches top bar height
     borderBottomWidth: 1,
-    borderBottomColor: colors.sidebarBorder,
-    gap: spacing.md,
+    borderBottomColor: '#E7E4DD',
+    gap: 10,
   },
   brandTextContainer: {
     flex: 1,
   },
   brandName: {
-    color: colors.white,
+    color: '#1F2421',
     fontSize: 14,
     fontWeight: '700',
-    letterSpacing: 0.8,
+    letterSpacing: 0.6,
   },
   brandSub: {
-    color: colors.sidebarSection,
+    color: '#8B938E',
     fontSize: 11,
-  },
-  collapseBtn: {
-    width: 32,
-    height: 32,
-    borderRadius: 6,
-    backgroundColor: 'rgba(255, 255, 255, 0.08)',
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.15)',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  collapseBtnPressed: {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-  },
-  collapseIcon: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#E2E8F0',
-    lineHeight: 20,
+    fontWeight: '500',
+    marginTop: 1,
   },
   scrollArea: {
     flex: 1,
@@ -219,32 +177,32 @@ const styles = StyleSheet.create({
   },
   footerContainer: {
     borderTopWidth: 1,
-    borderTopColor: colors.sidebarBorder,
-    padding: spacing.md,
-    backgroundColor: '#070E1C',
+    borderTopColor: '#E7E4DD',
+    padding: 10,
+    backgroundColor: '#FFFFFF',
   },
   userProfile: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: spacing.xs,
+    padding: 6,
     borderRadius: radii.sm,
   },
   userProfilePressed: {
-    backgroundColor: colors.sidebarHover,
+    backgroundColor: '#F6F5F2',
   },
   avatar: {
-    width: 32,
-    height: 32,
+    width: 28,
+    height: 28,
     borderRadius: radii.full,
-    backgroundColor: '#1E3A8A',
+    backgroundColor: '#E8F3EE',
     borderWidth: 1,
-    borderColor: '#3B82F6',
+    borderColor: '#C5E2D6',
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: spacing.sm,
+    marginRight: 8,
   },
   avatarText: {
-    color: colors.white,
+    color: '#1F6B4F',
     fontSize: 11,
     fontWeight: '700',
   },
@@ -252,7 +210,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   userName: {
-    color: colors.textPrimary,
+    color: '#1F2421',
     fontSize: 12,
     fontWeight: '600',
   },
@@ -262,15 +220,15 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   statusDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: colors.success,
+    width: 5,
+    height: 5,
+    borderRadius: 2.5,
+    backgroundColor: '#2E7D4F',
     marginRight: 4,
   },
   userRole: {
-    color: colors.textMuted,
-    fontSize: 10,
+    color: '#8B938E',
+    fontSize: 10.5,
   },
 });
 

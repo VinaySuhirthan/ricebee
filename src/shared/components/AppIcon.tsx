@@ -10,47 +10,89 @@ interface AppIconProps {
   style?: TextStyle;
 }
 
-const ICON_MAP: Record<IconName, string> = {
+// Enterprise line icon mapping (Segoe MDL2 Assets glyphs & pure monochrome symbols)
+// Zero emoji, zero multicolor fills, 100% monochrome stroke
+const LINE_ICON_MAP: Record<IconName, string> = {
+  dashboard: '\uE80F', // Home / Grid
+  search: '\uE721', // Magnifying glass line
+  customers: '\uE77B', // People outline
+  orders: '\uE7C3', // Order list outline
+  billing: '\uE8A1', // Receipt outline
+  invoices: '\uE8A5', // Document line
+  payments: '\uE8C7', // Payment card outline
+  followups: '\uE787', // Calendar outline
+  whatsapp: '\uE8BD', // Message bubble outline
+  returns: '\uE7A7', // Back curved arrow outline
+  scale: '\uE91B', // Weigh scale line
+  products: '\uE8F1', // Box package outline
+  notifications: '\uEA8F', // Bell line
+  activity: '\uE916', // Stop-watch line
+  plus: '\uE710', // Plus line
+  filter: '\uE71C', // Filter funnel line
+  refresh: '\uE72C', // Sync arrow
+  download: '\uE896', // Download arrow
+  settings: '\uE713', // Gear outline
+  user: '\uE77B', // User outline
+  calendar: '\uE787', // Calendar
+  check: '\uE73E', // Checkmark
+  close: '\uE711', // Cross mark
+  'arrow-right': '\uE72A', // Right arrow
+  'arrow-left': '\uE72B', // Left arrow
+  'trending-up': '\uE8A7', // Up chart
+  'trending-down': '\uE8A9', // Down chart
+  clock: '\uE916', // Clock outline
+  currency: '₹', // Rupee symbol
+  offline: '\uE8A1', // Receipt POS
+  online: '\uE774', // Globe outline
+  print: '\uE749', // Printer outline
+};
+
+// Fallback Unicode clean stroke symbols for non-windows environments
+const FALLBACK_LINE_MAP: Record<IconName, string> = {
   dashboard: '⊞',
-  search: '🔍',
-  customers: '👥',
-  orders: '📋',
-  billing: '🧾',
-  invoices: '📄',
-  payments: '💳',
-  followups: '📅',
+  search: '⌕',
+  customers: '⚲',
+  orders: '☰',
+  billing: '📄',
+  invoices: '☷',
+  payments: '⌸',
+  followups: '◷',
   whatsapp: '💬',
   returns: '↩',
   scale: '⚖',
-  products: '📦',
-  notifications: '🔔',
+  products: '◫',
+  notifications: '⌖',
   activity: '⏱',
-  plus: '＋',
-  filter: '⚙',
+  plus: '+',
+  filter: '⚚',
   refresh: '↻',
-  download: '⤓',
+  download: '↓',
   settings: '⚙',
-  user: '👤',
-  calendar: '📅',
+  user: '○',
+  calendar: '◷',
   check: '✓',
   close: '✕',
   'arrow-right': '→',
   'arrow-left': '←',
   'trending-up': '↗',
   'trending-down': '↘',
-  clock: '🕒',
+  clock: '◷',
   currency: '₹',
-  offline: '📝',
-  online: '🌐',
+  offline: '⌸',
+  online: '◎',
+  print: '⎙',
 };
 
 export const AppIcon: React.FC<AppIconProps> = ({
   name,
   size = 16,
-  color = colors.textPrimary,
+  color = colors.textSecondary,
   style,
 }) => {
-  const glyph = ICON_MAP[name] || '•';
+  const isWindows = Platform.OS === 'windows';
+  const glyph = isWindows
+    ? LINE_ICON_MAP[name] || FALLBACK_LINE_MAP[name] || '•'
+    : FALLBACK_LINE_MAP[name] || '•';
 
   return (
     <Text
@@ -59,10 +101,10 @@ export const AppIcon: React.FC<AppIconProps> = ({
         styles.icon,
         {
           fontSize: size,
-          lineHeight: size * 1.25,
+          lineHeight: size * 1.15,
           color,
-          width: size * 1.4,
-          height: size * 1.25,
+          width: size,
+          height: size,
           textAlign: 'center',
         },
         style,
@@ -75,9 +117,10 @@ export const AppIcon: React.FC<AppIconProps> = ({
 const styles = StyleSheet.create({
   icon: {
     fontFamily: Platform.select({
-      windows: 'Segoe UI Symbol, Segoe UI Emoji, Segoe UI',
-      default: 'System',
+      windows: 'Segoe MDL2 Assets, Segoe Fluent Icons, Segoe UI Symbol',
+      default: 'system-ui',
     }),
+    fontWeight: '400',
   },
 });
 

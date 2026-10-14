@@ -1,9 +1,9 @@
 import React from 'react';
 import {View, Text, StyleSheet, Pressable} from 'react-native';
 import {useNavigation} from '../navigation/AppNavigator';
-import {colors} from '../shared/theme/colors';
 import {typography} from '../shared/theme/typography';
 import {spacing, radii} from '../shared/theme/spacing';
+import AppIcon from '../shared/components/AppIcon';
 
 interface HeaderProps {
   onToggleSidebar?: () => void;
@@ -14,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({
   onToggleSidebar,
   isSidebarOpen,
 }) => {
-  const {currentRoute} = useNavigation();
+  const {currentRoute, navigate} = useNavigation();
 
   return (
     <View style={styles.headerContainer}>
@@ -27,15 +27,47 @@ export const Header: React.FC<HeaderProps> = ({
             ]}
             onPress={onToggleSidebar}
             accessibilityRole="button"
-            accessibilityLabel={isSidebarOpen ? 'Close sidebar' : 'Open sidebar'}>
-            <Text style={styles.hamburgerIcon}>☰</Text>
+            accessibilityLabel={isSidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}>
+            <AppIcon name="dashboard" size={15} color="#5E6661" />
           </Pressable>
         )}
         <View style={styles.titleWrapper}>
-          <Text style={[typography.h3, styles.titleText]}>
+          <Text style={[typography.h2, styles.titleText]}>
             {formatRouteTitle(currentRoute)}
           </Text>
         </View>
+      </View>
+
+      {/* Center Search Pill */}
+      <View style={styles.centerSection}>
+        <Pressable
+          style={styles.quickSearchPill}
+          onPress={() => navigate('global-search')}>
+          <AppIcon name="search" size={13} color="#8B938E" style={styles.searchIcon} />
+          <Text style={styles.quickSearchText}>Search customers, orders, inventory (Ctrl+K)...</Text>
+        </Pressable>
+      </View>
+
+      {/* Right User & System Controls */}
+      <View style={styles.rightSection}>
+        <Pressable
+          style={({pressed}) => [
+            styles.headerActionBtn,
+            pressed && styles.btnPressed,
+          ]}
+          onPress={() => navigate('settings')}>
+          <AppIcon name="settings" size={15} color="#5E6661" />
+        </Pressable>
+
+        <Pressable
+          style={({pressed}) => [
+            styles.headerActionBtn,
+            pressed && styles.btnPressed,
+          ]}
+          onPress={() => navigate('notifications')}>
+          <AppIcon name="notifications" size={15} color="#5E6661" />
+          <View style={styles.notificationDot} />
+        </Pressable>
       </View>
     </View>
   );
@@ -46,7 +78,7 @@ function formatRouteTitle(route: string): string {
     case 'dashboard':
       return 'Overview Dashboard';
     case 'global-search':
-      return 'Global System Search';
+      return 'Global Search';
     case 'customers':
       return 'Customers & Accounts';
     case 'sales-orders':
@@ -54,36 +86,38 @@ function formatRouteTitle(route: string): string {
     case 'offline':
       return 'Offline Store Billing';
     case 'online':
-      return 'Online Hub & Digital Orders';
+      return 'Online Hub & Orders';
     case 'invoices-billing':
-      return 'Invoices & Tax Billing';
+      return 'Invoices & Billing';
     case 'payments':
       return 'Payments & Settlements';
     case 'follow-ups':
       return 'Customer Follow-ups';
     case 'whatsapp-scheduler':
-      return 'WhatsApp Campaign Scheduler';
+      return 'WhatsApp Scheduler';
     case 'returns':
       return 'Returns & Credit Notes';
     case 'goods-inward':
-      return 'POS — Goods Inward Scale';
+      return 'Goods Inward Scale';
     case 'products':
-      return 'Product Catalog & Inventory';
+      return 'Products & Inventory';
     case 'notifications':
-      return 'System Notifications';
+      return 'Notifications';
     case 'activity-log':
-      return 'Audit Trail & Activity Log';
+      return 'Activity Log';
+    case 'settings':
+      return 'Settings & Tax Configuration';
     default:
-      return 'CRM Workspace';
+      return 'Enterprise CRM';
   }
 }
 
 const styles = StyleSheet.create({
   headerContainer: {
-    height: 52,
-    backgroundColor: colors.headerBg,
+    height: 56, // 56px top bar specification
+    backgroundColor: '#FFFFFF', // Clean white
     borderBottomWidth: 1,
-    borderBottomColor: colors.headerBorder,
+    borderBottomColor: '#E7E4DD', // Hairline divider
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -94,106 +128,76 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   hamburgerBtn: {
-    width: 36,
-    height: 36,
-    borderRadius: 6,
-    backgroundColor: '#F1F5F9',
+    width: 32,
+    height: 32,
+    borderRadius: radii.sm,
+    backgroundColor: '#F6F5F2',
     borderWidth: 1,
-    borderColor: '#CBD5E1',
+    borderColor: '#E7E4DD',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
   },
   hamburgerBtnPressed: {
-    backgroundColor: '#E2E8F0',
-  },
-  hamburgerIcon: {
-    fontSize: 20,
-    fontWeight: '700',
-    color: '#1E293B',
-    lineHeight: 22,
-  },
-  backBtn: {
-    width: 28,
-    height: 28,
-    borderRadius: radii.xs,
-    backgroundColor: colors.tableRowAlt,
-    borderWidth: 1,
-    borderColor: colors.cardBorder,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: spacing.sm,
+    backgroundColor: '#EAE7E0',
   },
   titleWrapper: {
     justifyContent: 'center',
   },
   titleText: {
-    color: colors.textPrimary,
-    fontSize: 15,
+    color: '#1F2421',
+    fontSize: 16,
     fontWeight: '600',
+  },
+  centerSection: {
+    flex: 1,
+    maxWidth: 380,
+    marginHorizontal: spacing.lg,
   },
   quickSearchPill: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.appBg,
+    backgroundColor: '#F6F5F2',
     borderWidth: 1,
-    borderColor: colors.inputBorder,
+    borderColor: '#E7E4DD',
     borderRadius: radii.sm,
-    paddingHorizontal: spacing.md,
-    paddingVertical: 6,
-    width: 320,
-  },
-  quickSearchPressed: {
-    borderColor: colors.primary,
+    paddingHorizontal: 10,
+    height: 34,
   },
   searchIcon: {
-    marginRight: spacing.sm,
+    marginRight: 8,
   },
   quickSearchText: {
-    color: colors.textMuted,
+    color: '#8B938E',
     fontSize: 12,
   },
   rightSection: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: spacing.sm,
+    gap: 8,
   },
-  quickActionBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.primary,
-    paddingHorizontal: spacing.md,
-    paddingVertical: 5,
-    borderRadius: radii.sm,
-  },
-  quickActionText: {
-    color: colors.white,
-    fontSize: 12,
-    fontWeight: '600',
-    marginLeft: 4,
-  },
-  iconBtn: {
+  headerActionBtn: {
     width: 32,
     height: 32,
     borderRadius: radii.sm,
-    backgroundColor: colors.cardBg,
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: colors.cardBorder,
+    borderColor: '#E7E4DD',
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
   },
   btnPressed: {
-    opacity: 0.75,
+    backgroundColor: '#F6F5F2',
   },
   notificationDot: {
     position: 'absolute',
-    top: 6,
-    right: 6,
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: colors.danger,
+    top: 5,
+    right: 5,
+    width: 5,
+    height: 5,
+    borderRadius: 2.5,
+    backgroundColor: '#C0392B',
   },
 });
 

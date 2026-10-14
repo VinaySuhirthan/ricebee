@@ -80,4 +80,5 @@ export type IconName =
   | 'clock'
   | 'currency'
   | 'offline'
-  | 'online';
+  | 'online'
+  | 'print';

@@ -417,7 +417,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: spacing.sm,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(30, 47, 77, 0.4)',
+    borderBottomColor: colors.divider,
   },
   detailLabel: {
     color: colors.textMuted,

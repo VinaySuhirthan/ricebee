@@ -348,12 +348,12 @@ const styles = StyleSheet.create({
     borderColor: colors.cardBorder,
   },
   tabActive: {
-    backgroundColor: 'rgba(37, 99, 235, 0.2)',
+    backgroundColor: colors.primarySoft,
     borderColor: colors.primary,
   },
   tabTextActive: {
-    color: '#60A5FA',
-    fontWeight: '700',
+    color: colors.primary,
+    fontWeight: '600',
   },
   tabTextInactive: {
     color: colors.textSecondary,

@@ -15,6 +15,7 @@ import {
   ActivityLogScreen,
   OfflineScreen,
   OnlineScreen,
+  SettingsScreen,
 } from '../modules';
 
 export const ROUTE_REGISTRY: Record<RouteKey, RouteDefinition> = {
@@ -107,6 +108,12 @@ export const ROUTE_REGISTRY: Record<RouteKey, RouteDefinition> = {
     title: 'Activity Log',
     section: 'SYSTEM',
     component: ActivityLogScreen,
+  },
+  settings: {
+    key: 'settings',
+    title: 'Settings & Tax',
+    section: 'SYSTEM',
+    component: SettingsScreen,
   },
 };
 

@@ -252,12 +252,12 @@ const styles = StyleSheet.create({
     borderColor: colors.cardBorder,
   },
   tabActive: {
-    backgroundColor: 'rgba(37, 99, 235, 0.2)',
+    backgroundColor: colors.primarySoft,
     borderColor: colors.primary,
   },
   tabTextActive: {
-    color: '#60A5FA',
-    fontWeight: '700',
+    color: colors.primary,
+    fontWeight: '600',
   },
   tabTextInactive: {
     color: colors.textSecondary,
@@ -269,15 +269,15 @@ const styles = StyleSheet.create({
   itemCard: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    backgroundColor: '#0F1A2E',
+    backgroundColor: colors.cardBg,
     borderWidth: 1,
     borderColor: colors.cardBorder,
     borderRadius: radii.sm,
     padding: spacing.lg,
   },
   itemCardDone: {
-    opacity: 0.5,
-    backgroundColor: '#0A1220',
+    opacity: 0.6,
+    backgroundColor: colors.tableRowHover,
   },
   checkbox: {
     marginRight: spacing.md,

@@ -251,15 +251,15 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   chipSelected: {
-    backgroundColor: 'rgba(37, 99, 235, 0.2)',
+    backgroundColor: colors.primarySoft,
     borderColor: colors.primary,
   },
   chipUnselected: {
-    backgroundColor: '#0F1A30',
-    borderColor: '#243454',
+    backgroundColor: colors.cardBg,
+    borderColor: colors.cardBorder,
   },
   chipTextSelected: {
-    color: '#60A5FA',
+    color: colors.primary,
     fontWeight: '600',
   },
   chipTextUnselected: {
@@ -306,12 +306,12 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: radii.sm,
-    backgroundColor: 'rgba(37, 99, 235, 0.12)',
+    backgroundColor: colors.primarySoft,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: spacing.md,
     borderWidth: 1,
-    borderColor: 'rgba(59, 130, 246, 0.25)',
+    borderColor: colors.cardBorder,
   },
   textContainer: {
     flex: 1,

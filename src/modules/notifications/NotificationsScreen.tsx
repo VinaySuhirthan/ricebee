@@ -226,12 +226,12 @@ const styles = StyleSheet.create({
     borderColor: colors.cardBorder,
   },
   tabActive: {
-    backgroundColor: 'rgba(37, 99, 235, 0.2)',
+    backgroundColor: colors.primarySoft,
     borderColor: colors.primary,
   },
   tabTextActive: {
-    color: '#60A5FA',
-    fontWeight: '700',
+    color: colors.primary,
+    fontWeight: '600',
   },
   tabTextInactive: {
     color: colors.textSecondary,
@@ -244,15 +244,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#0F1A2E',
+    backgroundColor: colors.cardBg,
     borderWidth: 1,
     borderColor: colors.cardBorder,
     borderRadius: radii.sm,
     padding: spacing.lg,
   },
   itemCardUnread: {
-    backgroundColor: '#12203A',
-    borderColor: '#243C6B',
+    backgroundColor: colors.primarySoft,
+    borderColor: colors.cardBorder,
   },
   itemCardPressed: {
     backgroundColor: colors.sidebarHover,
@@ -267,13 +267,13 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: radii.sm,
-    backgroundColor: 'rgba(37, 99, 235, 0.12)',
+    backgroundColor: colors.primarySoft,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: spacing.md,
     marginTop: 2,
     borderWidth: 1,
-    borderColor: 'rgba(59, 130, 246, 0.25)',
+    borderColor: colors.cardBorder,
   },
   itemTextContainer: {
     flex: 1,
@@ -296,8 +296,8 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   unreadTitle: {
-    color: colors.white,
-    fontWeight: '700',
+    color: colors.textPrimary,
+    fontWeight: '600',
   },
   itemMessage: {
     color: colors.textSecondary,

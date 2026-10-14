@@ -399,24 +399,24 @@ const styles = StyleSheet.create({
   onlineBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#ECFDF5',
+    backgroundColor: colors.successBg,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.xs,
     borderRadius: radii.full,
     borderWidth: 1,
-    borderColor: '#A7F3D0',
+    borderColor: '#C5E2D6',
     gap: 6,
   },
   onlineDot: {
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: '#059669',
+    backgroundColor: colors.success,
   },
   onlineText: {
     fontSize: 11,
-    fontWeight: '700',
-    color: '#065F46',
+    fontWeight: '600',
+    color: colors.success,
     letterSpacing: 0.5,
   },
   kpiRow: {
@@ -515,7 +515,7 @@ const styles = StyleSheet.create({
   tableHeaderRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F8FAFC',
+    backgroundColor: colors.tableRowAlt,
     paddingVertical: spacing.sm,
     paddingHorizontal: spacing.md,
     borderBottomWidth: 1,

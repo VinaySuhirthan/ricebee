@@ -431,12 +431,12 @@ const styles = StyleSheet.create({
     borderColor: colors.cardBorder,
   },
   tabActive: {
-    backgroundColor: 'rgba(37, 99, 235, 0.2)',
+    backgroundColor: colors.primarySoft,
     borderColor: colors.primary,
   },
   tabTextActive: {
-    color: '#60A5FA',
-    fontWeight: '700',
+    color: colors.primary,
+    fontWeight: '600',
   },
   tabTextInactive: {
     color: colors.textSecondary,
@@ -465,7 +465,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 6,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(30, 47, 77, 0.4)',
+    borderBottomColor: colors.divider,
   },
   detailLabel: {
     color: colors.textMuted,
@@ -484,7 +484,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: spacing.sm,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(30, 47, 77, 0.3)',
+    borderBottomColor: colors.divider,
   },
   itemTitle: {
     color: colors.textPrimary,

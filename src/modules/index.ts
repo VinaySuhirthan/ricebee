@@ -13,3 +13,4 @@ export * from './notifications';
 export * from './activity-log';
 export * from './offline';
 export * from './online';
+export * from './settings';

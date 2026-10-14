@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, Pressable} from 'react-native';
 import {NavSectionConfig, RouteKey} from '../navigation/navigationTypes';
-import {colors} from '../shared/theme/colors';
 import {typography} from '../shared/theme/typography';
 import {radii, spacing} from '../shared/theme/spacing';
 import AppIcon from '../shared/components/AppIcon';
@@ -25,6 +24,9 @@ export const SidebarSection: React.FC<SidebarSectionProps> = ({
       <View style={styles.itemsList}>
         {section.items.map(item => {
           const isActive = currentRoute === item.key;
+          const isUrgent = item.key === 'notifications' || item.key === 'returns';
+          const isTag = typeof item.badge === 'string';
+
           return (
             <Pressable
               key={item.key}
@@ -36,14 +38,14 @@ export const SidebarSection: React.FC<SidebarSectionProps> = ({
                 isActive && styles.navItemActive,
                 pressed && !isActive && styles.navItemPressed,
               ]}>
+              {/* 3px Left Accent Bar on Active item */}
+              {isActive && <View style={styles.activeBar} />}
+
               <View style={styles.itemLeft}>
-                {isActive && <View style={styles.activeIndicator} />}
                 <AppIcon
                   name={item.icon}
-                  size={17}
-                  color={
-                    isActive ? colors.sidebarTextActive : colors.sidebarText
-                  }
+                  size={16}
+                  color={isActive ? '#1F6B4F' : '#5E6661'}
                   style={styles.itemIcon}
                 />
                 <Text
@@ -58,16 +60,19 @@ export const SidebarSection: React.FC<SidebarSectionProps> = ({
                 </Text>
               </View>
 
+              {/* Badges & Tags: Quiet outlined chips or neutral count */}
               {item.badge !== undefined && (
-                <View
-                  style={[
-                    styles.badge,
-                    item.badgeVariant === 'info'
-                      ? styles.badgeInfo
-                      : styles.badgeDanger,
-                  ]}>
-                  <Text style={styles.badgeText}>{item.badge}</Text>
-                </View>
+                isTag ? (
+                  <View style={styles.quietTag}>
+                    <Text style={styles.quietTagText}>{item.badge}</Text>
+                  </View>
+                ) : isUrgent ? (
+                  <View style={styles.urgentBadge}>
+                    <Text style={styles.urgentBadgeText}>{item.badge}</Text>
+                  </View>
+                ) : (
+                  <Text style={styles.neutralCountText}>{item.badge}</Text>
+                )
               )}
             </Pressable>
           );
@@ -79,80 +84,98 @@ export const SidebarSection: React.FC<SidebarSectionProps> = ({
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    marginBottom: spacing.lg,
+    marginBottom: spacing.md,
   },
   sectionTitle: {
-    color: colors.sidebarSection,
+    color: '#8B938E',
     paddingHorizontal: spacing.lg,
-    paddingVertical: spacing.xs,
+    paddingVertical: 4,
     marginBottom: 4,
+    fontSize: 11,
+    letterSpacing: 0.8,
   },
   itemsList: {
-    paddingHorizontal: spacing.sm,
+    paddingHorizontal: 8,
   },
   navItem: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 9,
-    paddingHorizontal: spacing.md,
+    height: 38,
+    paddingHorizontal: 12,
     borderRadius: radii.sm,
     marginVertical: 1,
     position: 'relative',
   },
   navItemActive: {
-    backgroundColor: colors.sidebarActive,
+    backgroundColor: '#E8F3EE', // Soft green tinted background
   },
   navItemPressed: {
-    backgroundColor: colors.sidebarHover,
+    backgroundColor: '#F6F5F2',
   },
-  activeIndicator: {
+  activeBar: {
     position: 'absolute',
-    left: -spacing.md,
+    left: 0,
     top: 6,
     bottom: 6,
     width: 3,
-    backgroundColor: colors.primary,
+    backgroundColor: '#1F6B4F', // 3px left deep green accent bar
     borderRadius: 2,
   },
   itemLeft: {
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
-    marginRight: spacing.sm,
+    marginRight: spacing.xs,
   },
   itemIcon: {
-    marginRight: spacing.md,
+    marginRight: 10,
   },
   itemLabel: {
-    fontSize: 14,
+    fontSize: 13,
   },
   itemLabelActive: {
-    color: colors.sidebarTextActive,
-    fontWeight: '700',
+    color: '#1F2421',
+    fontWeight: '600',
   },
   itemLabelInactive: {
-    color: colors.sidebarText,
-    fontWeight: '500',
+    color: '#5E6661',
+    fontWeight: '400',
   },
-  badge: {
-    minWidth: 18,
-    height: 18,
-    borderRadius: radii.full,
+  quietTag: {
+    borderWidth: 1,
+    borderColor: '#E7E4DD',
+    borderRadius: 3,
     paddingHorizontal: 5,
+    paddingVertical: 1,
+    backgroundColor: '#FAF9F6',
+  },
+  quietTagText: {
+    fontSize: 9.5,
+    fontWeight: '600',
+    color: '#5E6661',
+    letterSpacing: 0.4,
+  },
+  urgentBadge: {
+    minWidth: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: '#F9ECEB',
+    borderWidth: 1,
+    borderColor: '#F0C5C1',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 4,
   },
-  badgeDanger: {
-    backgroundColor: colors.danger,
+  urgentBadgeText: {
+    color: '#C0392B',
+    fontSize: 9.5,
+    fontWeight: '600',
   },
-  badgeInfo: {
-    backgroundColor: colors.primary,
-  },
-  badgeText: {
-    color: colors.white,
-    fontSize: 10,
-    fontWeight: '700',
+  neutralCountText: {
+    fontSize: 11,
+    color: '#8B938E',
+    fontWeight: '500',
   },
 });
 

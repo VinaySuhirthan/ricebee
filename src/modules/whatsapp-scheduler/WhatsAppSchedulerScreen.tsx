@@ -22,7 +22,7 @@ const SAMPLE_CAMPAIGNS: ScheduledCampaign[] = [
     scheduledTime: 'Today, 04:00 PM',
     status: 'scheduled',
     messagePreview:
-      "🌾 Today's Mill Gate Rates: Sonam Steamed ₹1850/bag, HMT Kolam ₹1600/bag. Orders open till 6 PM.",
+      "Today's Mill Gate Rates: Sonam Steamed ₹1850/bag, HMT Kolam ₹1600/bag. Orders open till 6 PM.",
     createdAt: '2026-10-14T08:00:00',
   },
   {

@@ -15,3 +15,5 @@ export {default as AppTable} from './components/AppTable';
 export {default as EmptyState} from './components/EmptyState';
 export {default as PageHeader} from './components/PageHeader';
 export {default as AppIcon} from './components/AppIcon';
+export {default as SegmentedControl} from './components/SegmentedControl';
+export {default as Switch} from './components/Switch';

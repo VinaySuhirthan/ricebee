@@ -30,6 +30,14 @@ export interface StoreOrder {
   totalQtyKg: number;
   subtotal: number;
   discount: number;
+  taxableAmount?: number;
+  cgstPercent?: number;
+  cgstAmount?: number;
+  sgstPercent?: number;
+  sgstAmount?: number;
+  totalTax?: number;
+  roundOff?: number;
+  hsnCode?: string;
   grandTotal: number;
   paymentMode: PaymentMode;
   paymentStatus: StorePaymentStatus;

@@ -25,7 +25,7 @@ export const AppBadge: React.FC<AppBadgeProps> = ({
   label,
   variant = 'neutral',
   size = 'md',
-  pill = true,
+  pill = false,
   style,
   textStyle,
 }) => {
@@ -60,34 +60,34 @@ const VARIANT_MAP: Record<
   {bg: string; text: string; border: string}
 > = {
   primary: {
-    bg: colors.primaryLight,
-    text: colors.primary,
-    border: 'rgba(21, 101, 192, 0.3)',
+    bg: '#E8F3EE',
+    text: '#1F6B4F',
+    border: '#C5E2D6',
   },
   success: {
-    bg: colors.successBg,
-    text: colors.success,
-    border: 'rgba(46, 125, 50, 0.3)',
+    bg: '#EAF5EE',
+    text: '#2E7D4F',
+    border: '#C9E6D4',
   },
   warning: {
-    bg: colors.warningBg,
-    text: colors.warning,
-    border: 'rgba(230, 81, 0, 0.3)',
+    bg: '#FAF2E6',
+    text: '#C27A12',
+    border: '#EED9B8',
   },
   danger: {
-    bg: colors.dangerBg,
-    text: colors.danger,
-    border: 'rgba(198, 40, 40, 0.3)',
+    bg: '#F9ECEB',
+    text: '#C0392B',
+    border: '#F0C5C1',
   },
   info: {
-    bg: colors.infoBg,
-    text: colors.info,
-    border: 'rgba(2, 119, 189, 0.3)',
+    bg: '#EBF3F8',
+    text: '#2F6F9F',
+    border: '#C5DDF0',
   },
   neutral: {
-    bg: colors.neutralBg,
-    text: colors.neutral,
-    border: 'rgba(96, 125, 139, 0.3)',
+    bg: '#F0F2F1',
+    text: '#5E6661',
+    border: '#E7E4DD',
   },
 };
 
@@ -97,9 +97,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: radii.xs, // 4px subtle rounded status chip
   },
   pill: {
-    borderRadius: radii.full,
+    borderRadius: radii.xs,
   },
   rounded: {
     borderRadius: radii.xs,
@@ -111,16 +112,18 @@ const styles = StyleSheet.create({
   },
   badgeMd: {
     paddingHorizontal: 8,
-    paddingVertical: 3,
-    minHeight: 22,
+    paddingVertical: 2.5,
+    minHeight: 20,
   },
   textSm: {
     fontSize: 10,
     lineHeight: 12,
+    fontWeight: '500',
   },
   textMd: {
     fontSize: 11,
     lineHeight: 14,
+    fontWeight: '500',
   },
 });
 

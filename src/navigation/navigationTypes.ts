@@ -16,7 +16,8 @@ export type RouteKey =
   | 'offline'
   | 'online'
   | 'notifications'
-  | 'activity-log';
+  | 'activity-log'
+  | 'settings';
 
 export type SectionKey =
   | 'OVERVIEW'

@@ -9,7 +9,7 @@ export interface AppCardProps {
   title?: string;
   subtitle?: string;
   action?: React.ReactNode;
-  variant?: 'default' | 'elevated' | 'glass' | 'accent';
+  variant?: 'default' | 'elevated' | 'accent';
   style?: StyleProp<ViewStyle>;
   contentStyle?: StyleProp<ViewStyle>;
 }
@@ -49,55 +49,54 @@ export const AppCard: React.FC<AppCardProps> = ({
 
 const VARIANT_STYLES = StyleSheet.create({
   default: {
-    backgroundColor: colors.cardBg,
-    borderColor: colors.cardBorder,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#E7E4DD',
   },
   elevated: {
-    backgroundColor: colors.cardBgElevated,
-    borderColor: colors.cardBorder,
-  },
-  glass: {
-    backgroundColor: 'rgba(255, 255, 255, 0.85)',
-    borderColor: colors.cardBorder,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#E7E4DD',
   },
   accent: {
-    backgroundColor: colors.cardBg,
-    borderColor: colors.primary,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#E7E4DD',
+    borderLeftColor: '#1F6B4F',
     borderLeftWidth: 3,
   },
 });
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: radii.md,
+    borderRadius: radii.md, // 8px
     borderWidth: 1,
     padding: spacing.lg,
-    marginVertical: spacing.sm,
-    // Subtle white-card shadow for Zoho-like elevation
-    shadowColor: '#000',
+    marginVertical: spacing.xs,
+    // Very light subtle shadow
+    shadowColor: '#101814',
     shadowOffset: {width: 0, height: 1},
-    shadowOpacity: 0.06,
-    shadowRadius: 4,
-    elevation: 2,
+    shadowOpacity: 0.04,
+    shadowRadius: 2,
+    elevation: 1,
   },
   cardHeader: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingBottom: spacing.md,
+    paddingBottom: spacing.sm,
     marginBottom: spacing.md,
     borderBottomWidth: 1,
-    borderBottomColor: colors.divider,
+    borderBottomColor: '#E7E4DD',
   },
   titleContainer: {
     flex: 1,
   },
   titleText: {
-    color: colors.textPrimary,
+    color: '#1F2421',
     fontSize: 15,
+    fontWeight: '600',
   },
   subtitleText: {
-    color: colors.textSecondary,
+    color: '#5E6661',
+    fontSize: 12.5,
     marginTop: 2,
   },
   actionContainer: {

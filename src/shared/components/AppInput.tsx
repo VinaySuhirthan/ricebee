@@ -20,6 +20,7 @@ export interface AppInputProps {
   onChangeText: (text: string) => void;
   placeholder?: string;
   label?: string;
+  required?: boolean;
   icon?: IconName;
   helperText?: string;
   error?: string;
@@ -29,6 +30,7 @@ export interface AppInputProps {
   multiline?: boolean;
   style?: StyleProp<ViewStyle>;
   inputStyle?: StyleProp<TextStyle>;
+  suffix?: string;
 }
 
 export const AppInput: React.FC<AppInputProps> = ({
@@ -36,6 +38,7 @@ export const AppInput: React.FC<AppInputProps> = ({
   onChangeText,
   placeholder,
   label,
+  required = false,
   icon,
   helperText,
   error,
@@ -45,13 +48,16 @@ export const AppInput: React.FC<AppInputProps> = ({
   multiline = false,
   style,
   inputStyle,
+  suffix,
 }) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
     <View style={[styles.container, style]}>
       {label && (
-        <Text style={[typography.captionMedium, styles.label]}>{label}</Text>
+        <Text style={[typography.label, styles.label]}>
+          {label} {required && <Text style={styles.requiredStar}>*</Text>}
+        </Text>
       )}
       <View
         style={[
@@ -80,12 +86,13 @@ export const AppInput: React.FC<AppInputProps> = ({
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           style={[
-            typography.body,
+            typography.bodySmall,
             styles.textInput,
             multiline && styles.textInputMultiline,
             inputStyle,
           ]}
         />
+        {suffix && <Text style={styles.suffixText}>{suffix}</Text>}
       </View>
       {error ? (
         <Text style={[typography.caption, styles.errorText]}>{error}</Text>
@@ -100,55 +107,70 @@ export const AppInput: React.FC<AppInputProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: spacing.xs,
+    marginVertical: spacing.xxs,
   },
   label: {
-    color: colors.textSecondary,
-    marginBottom: spacing.xs,
+    color: '#5E6661',
+    marginBottom: 4,
+    fontSize: 12.5,
+    fontWeight: '500',
+  },
+  requiredStar: {
+    color: '#C0392B',
     fontSize: 12,
   },
   inputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.inputBg,
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: colors.inputBorder,
-    borderRadius: radii.sm,
-    paddingHorizontal: spacing.md,
-    minHeight: 38,
+    borderColor: '#E7E4DD',
+    borderRadius: radii.sm, // 6px
+    paddingHorizontal: 12,
+    height: 40,
   },
   inputWrapperFocused: {
-    borderColor: colors.primary,
-    backgroundColor: colors.cardBg,
+    borderColor: '#1F6B4F',
+    borderWidth: 1.5,
   },
   inputWrapperError: {
-    borderColor: colors.danger,
+    borderColor: '#C0392B',
   },
   inputWrapperDisabled: {
-    backgroundColor: colors.tableRowAlt,
-    opacity: 0.6,
+    backgroundColor: '#F6F5F2',
+    opacity: 0.7,
   },
   leadingIcon: {
-    marginRight: spacing.sm,
+    marginRight: 8,
   },
   textInput: {
     flex: 1,
-    color: colors.textPrimary,
-    paddingVertical: spacing.sm,
+    color: '#1F2421',
+    fontSize: 13.5,
+    height: '100%',
+    paddingVertical: 0, // vertically centered
     paddingHorizontal: 0,
-    fontSize: 13,
   },
   textInputMultiline: {
-    minHeight: 80,
+    minHeight: 70,
     textAlignVertical: 'top',
+    paddingVertical: 8,
+  },
+  suffixText: {
+    fontSize: 13,
+    fontWeight: '500',
+    color: '#8B938E',
+    marginLeft: 4,
   },
   helperText: {
-    color: colors.textMuted,
-    marginTop: 4,
+    color: '#8B938E',
+    marginTop: 3,
+    fontSize: 11.5,
   },
   errorText: {
-    color: colors.danger,
-    marginTop: 4,
+    color: '#C0392B',
+    marginTop: 3,
+    fontSize: 11.5,
   },
 });
 

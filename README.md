@@ -186,7 +186,7 @@ Run these in a terminal, inside the `rice/` folder.
 
 ---
 
-## 8. Good Habits
+## 8. Important friendss
 
 - **Reuse before you build.** Check `src/shared/` first. Most common needs are already covered.
 - **Keep features separate.** Work inside the module you are changing, and avoid editing other modules unless you have to.
@@ -196,11 +196,10 @@ Run these in a terminal, inside the `rice/` folder.
 
 If you get stuck, look at an existing module that does something similar to what you need. Copying its structure is a perfectly good way to begin.
 
-Happy building.
 
 ---
 
-## 9. Note for AI Agents
+## 9. Note for AI Agents(give b4 vibing)
 
 - **DO:** Write all feature code exclusively inside `src/modules/<feature>/` and reuse components from `src/shared/`.
 - **DO:** Run `npx tsc --noEmit` and confirm 0 TypeScript errors before completing your work.
